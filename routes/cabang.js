@@ -6,6 +6,9 @@ const controller = require('../controllers/cabangController');
 // Get all cabang
 router.get('/', controller.getAllCabang);
 
+// Get cabang by id
+router.get('/:id', controller.getCabangById);
+
 // Register cabang
 router.post('/register', controller.registerCabang);
 

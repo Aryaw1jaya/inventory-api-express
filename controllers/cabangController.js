@@ -12,6 +12,17 @@ exports.getAllCabang = async (req, res) => {
     }
 };
 
+// Lihat cabang by id
+exports.getCabangById = async (req, res) => {
+    try {
+        const rows = await cabangModel.getCabangById(req.params.id);
+        if (rows.length === 0) return res.status(404).json({ message: 'Cabang tidak ditemukan' });
+        res.json(rows[0]);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+};
+
 // register cabang
 exports.registerCabang = async (req, res) => {
     try {
