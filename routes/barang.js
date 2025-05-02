@@ -26,9 +26,9 @@ router.get('/:id', async (req, res) => {
 
 // Tambah barang baru
 router.post('/', async (req, res) => {
-  const { nama, harga, stok, status } = req.body;
+  const { nama, harga, stok, id_cabang, status } = req.body;
   try {
-    const [result] = await pool.query('INSERT INTO barang (nama, harga, stok, status) VALUES (?, ?, ?, ?)', [nama, harga, stok, status]);
+    const [result] = await pool.query('INSERT INTO barang (nama, harga, stok, id_cabang, status) VALUES (?, ?, ?, ?, ?)', [nama, harga, stok, id_cabang, status]);
     res.status(201).json({ message: 'Barang ditambahkan', id: result.insertId });
   } catch (err) {
     res.status(500).json({ message: err.message });
